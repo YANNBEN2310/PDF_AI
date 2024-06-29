@@ -198,7 +198,7 @@ input[type="text"] {
 button {
     margin-top: 10px;
     padding: 30px;
-    width: 300px; /* Increase the width of the button */
+    width: 250px; /* Increase the width of the button */
     border: none;
     border-radius: 30px;
     background-color: #007bff;

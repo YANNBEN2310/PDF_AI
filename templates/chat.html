@@ -3,26 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDF Chat Bot</title>
+    <title>Chat with PDF Bot</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
     <header>
-        <h1>PDF Ai</h1>
-        <img src="images/robot.gif" alt="Moving Image" class="header-image">
+        <h1>PDF Chat Bot</h1>
     </header>
     <div class="container">
-        <div class="description">
-            <p>Upload a PDF and choose an action!</p>
+        <div class="chat-container">
+            <div class="chat-box">
+                <div class="bot-face">
+                    <img src="{{ url_for('static', filename='images/bot.gif') }}" alt="Bot">
+                </div>
+                <div class="messages" id="messages"></div>
+                <div class="loader" id="loader"></div>
+                <input type="text" id="userInput" placeholder="Type your message here..." onkeypress="checkEnter(event)">
+                <button onclick="sendMessage()">Send</button>
+            </div>
+            <div class="pdf-viewer">
+                <embed id="pdfViewer" src="{{ url_for('uploaded_file', filename=pdf_path) }}" type="application/pdf" width="100%" height="600px" />
+            </div>
         </div>
-        <form action="/upload" method="post" enctype="multipart/form-data">
-            <input type="file" name="file" required>
-            <button type="submit" name="action" value="talk">Talk to PDF</button>
-            <button type="submit" name="action" value="analyse">Analyse PDF</button>
-        </form>
     </div>
     <footer>
         <p>&copy; 2024 PDF Chat Bot. All rights reserved.</p>
     </footer>
+    <script>
+        const pdfPath = "{{ pdf_path }}";
+    </script>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
 </body>
 </html>
