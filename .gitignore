@@ -1,0 +1,6 @@
+__pycache__/
+venv/
+example.pdf
+process_pdf.ipynb
+old/
+new/

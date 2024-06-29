@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>PDF Analysis</h1>
+    </header>
+    <div class="container">
+        <div class="description">
+            <p>View detailed analysis of your PDF file!</p>
+        </div>
+        <div id="total-words-images" class="analysis-container">
+            <h2>Total number of words: {{ total_words }}</h2>
+            <h2>Total number of images: {{ total_images }}</h2>
+        </div>
+        <div id="extracted-images" class="analysis-container">
+            <h2>Extracted Images</h2>
+            <div class="image-grid">
+                {% for image in images %}
+                    <div class="image-container">
+                        <img src="{{ url_for('static', filename='images/' ~ image) }}" alt="Extracted Image">
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div id="top-words" class="analysis-container">
+            <h2>Top 20 Words by Frequency</h2>
+            <div class="plot-container">{{ word_occurrences_plot|safe }}</div>
+        </div>
+        <div id="word-cloud" class="analysis-container">
+            <h2>Word Cloud</h2>
+            <div class="plot-container">{{ word_cloud_plot|safe }}</div>
+        </div>
+        <div id="sentence-similarities" class="analysis-container">
+            <h2>Sentence Similarities</h2>
+            <div class="plot-container">{{ sentence_similarities_plot|safe }}</div>
+        </div>
+        <div id="lda-classification" class="analysis-container">
+            <h2>LDA Classification</h2>
+            <div class="plot-container">{{ lda_plot|safe }}</div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 PDF Analysis. All rights reserved.</p>
+    </footer>
+</body>
+</html>

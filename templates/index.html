@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Chat Bot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>PDF Ai</h1>
+    </header>
+    <div class="container">
+        <div class="description">
+            <p>Upload a PDF and choose an action!</p>
+        </div>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" required>
+            <button type="submit" name="action" value="talk">Talk to PDF</button>
+            <button type="submit" name="action" value="analyse">Analyse PDF</button>
+        </form>
+    </div>
+    <footer>
+        <p>&copy; 2024 PDF Chat Bot. All rights reserved.</p>
+    </footer>
+</body>
+</html>
