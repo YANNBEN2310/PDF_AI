@@ -1,0 +1,20 @@
+<!-- search_pdf_modal.html -->
+<form id="searchPdfForm" action="/search_pdfs" method="post" enctype="multipart/form-data">
+    <div>
+        <input type="text" name="keyword" placeholder="Input your keyword" required>
+    </div>
+    <div>
+        <label for="pdf_folder">Select Folder:</label>
+        <input type="file" id="pdf_folder" name="pdf_folder" webkitdirectory directory multiple required>
+    </div>
+    <div>
+        <button type="submit">Search</button>
+    </div>
+</form>
+
+<!-- Progress Bar and Processing Status -->
+<div id="progress-container" style="display:none; margin-top: 20px;">
+    <label for="progress-bar">Processing Progress:</label>
+    <progress id="progress-bar" value="0" max="100" style="width: 100%;"></progress>
+    <p id="progress-text">Processed 0 of 0 files.</p>
+</div>

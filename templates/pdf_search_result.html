@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Search Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>PDF Search Results</h1>
+    </header>
+    <div class="container">
+        {% if results %}
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>PDF Filename</th>
+                    <th>Number of Pages</th>
+                    <th>Pages with Match</th>
+                    <th>Similarity Score</th>
+                    <th>View PDF</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for result in results %}
+                <tr>
+                    <td>{{ result['filename'] }}</td>
+                    <td>{{ result['total_pages'] }}</td>
+                    <td>{{ result['pages'] | join(', ') }}</td>
+                    <td>{{ result['score'] }}</td>
+                    <td><a href="{{ url_for('view_pdf', filename=result['filename']) }}" target="_blank">View PDF</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>No results found.</p>
+        {% endif %}
+    </div>
+    <footer>
+        <p>&copy; 2024 PDF Search Results. All rights reserved.</p>
+    </footer>
+</body>
+</html>
